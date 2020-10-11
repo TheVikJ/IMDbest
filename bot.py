@@ -29,7 +29,6 @@ async def on_message(message):
               question = json.loads(r).get('results')[0].get('question')
               answer = json.loads(r).get('results')[0].get('correct_answer')
               type = json.loads(r).get('results')[0].get('type')
-              print(type)
               await message.channel.send(question)
               msg = [answer]
               for i in range(len(json.loads(r).get('results')[0].get('incorrect_answers'))):
@@ -193,7 +192,6 @@ async def on_message(message):
                                    movieid2 = 'tt' + number
                      qstring = {"ids": movieid2}
                      response = requests.request("GET", imdburl, headers=headers, params=qstring).text
-                     print(json.loads(response))
                      image = json.loads(response).get(movieid2).get('title').get('image').get('url')
                      title = json.loads(response).get(movieid2).get('title').get('title')
                      ratings = json.loads(response).get(movieid2).get('ratings').get('rating')
